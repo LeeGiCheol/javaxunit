@@ -13,6 +13,9 @@ public class TestCase {
 
 
     public TestResult run() {
+        TestResult testResult = new TestResult();
+        testResult.testStarted();
+
         setUp();
 
         try {
@@ -24,7 +27,8 @@ public class TestCase {
 
         tearDown();
 
-        return new TestResult();
+
+        return testResult;
     }
 
 
