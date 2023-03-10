@@ -1,28 +1,16 @@
 package cheeolee.xunit;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-public class WasRun {
+public class WasRun extends TestCase {
 
     public boolean wasRun;
-    private final String name;
-
 
     public WasRun(String name) {
-        this.name = name;
+        super(name);
     }
+
 
     public void testMethod() {
         wasRun = true;
     }
 
-    public void run() {
-        try {
-            Method method = this.getClass().getMethod(name);
-            method.invoke(this);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
