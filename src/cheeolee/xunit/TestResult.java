@@ -3,14 +3,20 @@ package cheeolee.xunit;
 public class TestResult {
 
     int runCount = 0;
+    int errorCount = 0;
 
 
     public void testStarted() {
         runCount++;
     }
 
-    public String getSummary() {
-        return runCount + " run, 0 failed";
+    public void testFailed() {
+        errorCount++;
     }
+
+    public String getSummary() {
+        return runCount + " run, " + errorCount + " failed";
+    }
+
 
 }
