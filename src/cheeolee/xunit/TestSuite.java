@@ -1,7 +1,8 @@
 package cheeolee.xunit;
 
+import org.springframework.core.annotation.AnnotationUtils;
+
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ public class TestSuite implements Test {
 
     public TestSuite(Class<? extends TestCase> testClass) {
         Arrays.stream(testClass.getMethods())
-                .filter(m -> m.getName().startsWith("test"))
+                .filter(m -> AnnotationUtils.findAnnotation(m, cheeolee.xunit.anootation.Test.class) != null)
                 .forEach(m -> {
                     try {
                         add(testClass.getConstructor(String.class).newInstance(m.getName()));
