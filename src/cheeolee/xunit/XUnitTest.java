@@ -3,10 +3,14 @@ package cheeolee.xunit;
 public class XUnitTest {
 
     public static void main(String[] args) {
-        System.out.println(new TestCaseTest("testTemplateMethod").run().getSummary());
-        System.out.println(new TestCaseTest("testResult").run().getSummary());
-        System.out.println(new TestCaseTest("testFailedResultFormatting").run().getSummary());
-        System.out.println(new TestCaseTest("testFailedResult").run().getSummary());
+        TestResult testResult = new TestResult();
+        new TestCaseTest("testTemplateMethod").run(testResult);
+        new TestCaseTest("testResult").run(testResult);
+        new TestCaseTest("testFailedResultFormatting").run(testResult);
+        new TestCaseTest("testFailedResult").run(testResult);
+        new TestCaseTest("testSuite").run(testResult);
+
+        System.out.println(testResult.getSummary());
     }
 
 }

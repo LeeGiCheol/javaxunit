@@ -1,6 +1,5 @@
 package cheeolee.xunit;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class TestCase {
@@ -12,8 +11,7 @@ public class TestCase {
     }
 
 
-    public TestResult run() {
-        TestResult testResult = new TestResult();
+    public void run(TestResult testResult) {
         testResult.testStarted();
 
         setUp();
@@ -26,9 +24,6 @@ public class TestCase {
         }
 
         tearDown();
-
-
-        return testResult;
     }
 
 
