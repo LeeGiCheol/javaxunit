@@ -12,7 +12,7 @@ public class TestCase {
     }
 
 
-    public void run() {
+    public TestResult run() {
         setUp();
 
         try {
@@ -23,6 +23,8 @@ public class TestCase {
         }
 
         tearDown();
+
+        return new TestResult();
     }
 
 
