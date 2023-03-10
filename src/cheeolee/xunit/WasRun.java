@@ -1,11 +1,16 @@
 package cheeolee.xunit;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class WasRun {
 
     public boolean wasRun;
+    private final String name;
+
 
     public WasRun(String name) {
-
+        this.name = name;
     }
 
     public void testMethod() {
@@ -13,6 +18,11 @@ public class WasRun {
     }
 
     public void run() {
-
+        try {
+            Method method = this.getClass().getMethod(name);
+            method.invoke(this);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
